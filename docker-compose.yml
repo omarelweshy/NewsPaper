@@ -4,12 +4,12 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=news
+      - POSTGRES_USER=omar
+      - POSTGRES_PASSWORD=010
   web:
     build: .
-    command: gunicorn NewsPaper.wsgi -b 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 # gunicorn NewsPaper.wsgi -b 0.0.0.0:8000
     # environment: 
     #   - ENVIRONMENT=prodction
     #   - SECRET_KEY=dn*1(+4sp7**yo^1&54d)qgr=5_gun-tn+t#_br2-9=&8w+^fg
