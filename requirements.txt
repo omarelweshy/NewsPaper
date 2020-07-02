@@ -1,0 +1,10 @@
+Django==3.0.7
+psycopg2
+django-crispy-forms
+django-allauth
+pillow
+stripe
+django-debug-toolbar
+whitenoise
+gunicorn
+dj-database-url

@@ -1,0 +1,24 @@
+version: '3'
+    
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web:
+    build: .
+    command: gunicorn NewsPaper.wsgi -b 0.0.0.0:8000
+    # environment: 
+    #   - ENVIRONMENT=prodction
+    #   - SECRET_KEY=dn*1(+4sp7**yo^1&54d)qgr=5_gun-tn+t#_br2-9=&8w+^fg
+    #   - DEBUG=1
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    links: 
+      - db:db
