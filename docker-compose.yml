@@ -10,10 +10,9 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000 # gunicorn NewsPaper.wsgi -b 0.0.0.0:8000
-    # environment: 
-    #   - ENVIRONMENT=prodction
-    #   - SECRET_KEY=dn*1(+4sp7**yo^1&54d)qgr=5_gun-tn+t#_br2-9=&8w+^fg
-    #   - DEBUG=1
+    environment: 
+      # - SECRET_KEY=ic5s$e!v0k0^!r$#6!w(b%cbgt=%)x@0x9@h7io^(&sg)epc+d
+      - DEBUG=1
     volumes:
       - .:/code
     ports:
