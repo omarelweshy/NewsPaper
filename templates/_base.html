@@ -6,47 +6,38 @@
 <title>{% block title %}World News{% endblock title %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">World News</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Albums</a>
-        </li>
-        <li class="nav-item">
-            <a href="{% url 'home' %}" class="nav-link" href="">ADD SONG</a>
-        </li>
-        <li>
-            <a href="{% url 'home' %}" class="nav-link" href="">ADD ALBUM</a>
-        </li>
-        <li>
-            <a href="{% url 'home' %}" class="nav-link" href="">About</a>
-        </li>
-        <li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div align="center" class="nav-item">
             <form class="form-inline my-2 my-lg-0" action="{% url 'home' %}" method="get">
                 <input name="q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
-        </li>
-        </ul>
-        
-        <div>
-        {% if user.is_authenticated %}
-            Welcome {{ user.first_name }}
-            <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-warning">Log out</button></a>
-        {% else %}
-             <a href="{% url 'account_login' %}"><button type="button" class="btn btn-lg btn-primary" >Login</button><a>
-             <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-secondary btn-lg" >Sign Up</button><a>
-        {% endif %}
-        </div>
+    <div>{% now "SHORT_DATETIME_FORMAT" %} </div>
+    <div class="center">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.jpg' %}"  width="500" height="40">
+        </a>
     </div>
-  </nav>
+
+    <div>
+    {% if user.is_authenticated %}
+        Welcome {{ user.first_name }}
+        <a href="{% url 'account_logout' %}"><button type="button" class="btn btn-warning">Log out</button></a>
+    {% else %}
+            <a href="{% url 'account_login' %}"><button type="button" class="btn btn-lg btn-primary" >Login</button><a>
+            <a href="{% url 'account_signup' %}"><button type="button" class="btn btn-secondary btn-lg" >Sign Up</button><a>
+    {% endif %}
+    </div>
+</nav>
 </header>
 <body>
 
