@@ -1,8 +1,26 @@
 {% extends '_base.html' %}
+{% load static %}
 {% block content %}
+    <h1> {{category.name}} News </h1>
+    <br>
     {% for report in category.reports.all %}
-        <ul>
-            <a href="{{report.get_absolute_url}}"> {{report.title}} </a>
-        </ul>
+    <ul class="list-unstyled">
+        <a href="{{report.get_absolute_url}}">
+            <li class="media">
+                <img class="mr-3" src="{{report.image.url }}" alt="{{report.title}}" width="150" height="150">
+                <div class="media-body">
+                <h5 class="mt-0 mb-1">{{report.title}}</h5>
+                <div>
+                <h6> Published by : {{report.author}}
+                </div>
+                {{ report.body|truncatechars_html:60 }}
+                </div>
+                <small class="text-muted">{{ report.date }}</small>
+
+            </li>
+        </a>
+    </ul>
     {% endfor %}
+
+
 {% endblock content %}
